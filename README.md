@@ -1,4 +1,4 @@
-# BioflowGO - Link-in-Bio para Profissionais
+# BioflowGO - Link-in-Bio
 
 <p align="center">
   <img src="https://www.bioflowgo.com.br/_next/image?url=%2Flogo.png&w=256&q=75" alt="BioflowGO Logo" width="200"/>
