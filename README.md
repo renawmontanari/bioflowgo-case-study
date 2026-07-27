@@ -228,7 +228,7 @@ npm run dev
 
 ## Autor
 
-**Renan Montanari** - [github.com/renawmontanari](https://github.com/renawmontanari) · **LinkedIn** - [https://linkedin.com/in/renan-w-montanari](https://www.linkedin.com/in/renan-w-montanari/) · **BioflowGO** - [bioflowgo.com.br](https://bioflowgo.com.br)
+**Renan Montanari** - [Renan Montanari](https://www.renanmontanari.com.br) · **LinkedIn** - [https://linkedin.com/in/renan-w-montanari](https://www.linkedin.com/in/renan-w-montanari/) · **BioflowGO** - [bioflowgo.com.br](https://bioflowgo.com.br)
 
 ---
 
