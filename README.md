@@ -87,10 +87,10 @@ app/
 
 ### Separação de Responsabilidades
 
-- **Server Components** — leitura de dados diretamente do banco via Prisma (sem camada de API)
-- **Server Actions** — todas as mutações (criar, editar, deletar perfil, links, projetos)
-- **Client Components** — interatividade, formulários, upload de imagens com compressão
-- **API Routes** — exclusivamente para webhooks externos (Stripe, NextAuth)
+- **Server Components** - leitura de dados diretamente do banco via Prisma (sem camada de API)
+- **Server Actions** - todas as mutações (criar, editar, deletar perfil, links, projetos)
+- **Client Components** - interatividade, formulários, upload de imagens com compressão
+- **API Routes** - exclusivamente para webhooks externos (Stripe, NextAuth)
 
 ### Fluxo de Dados
 
@@ -164,21 +164,21 @@ Novos usuários são guiados pela criação do perfil com um tour interativo pel
 
 ## Desafios e Soluções
 
-### Desafio 1 — Performance da Página de Perfil
+### Desafio 1 - Performance da Página de Perfil
 As páginas de perfil públicas precisam carregar rápido, pois são compartilhadas via bio do Instagram. A latência de cold-start das funções serverless era uma preocupação.
 
 **Solução:** Uso do ISR (Incremental Static Regeneration) do Next.js para as páginas de perfil, com revalidação sob demanda disparada quando o usuário atualiza o perfil. Isso entrega performance de arquivo estático para os visitantes, mantendo os dados sempre atualizados.
 
 ---
 
-### Desafio 2 — Upload de Imagens Sem Armazenamento Dedicado
+### Desafio 2 - Upload de Imagens Sem Armazenamento Dedicado
 Evitar a complexidade de um serviço de armazenamento de objetos separado (S3/R2) para o MVP.
 
 **Solução:** As imagens são comprimidas no cliente (reduzindo o tamanho em ~70–80% em média) e armazenadas como base64 no banco de dados na versão inicial. Isso simplificou significativamente a arquitetura para o MVP, mantendo o uso dentro dos limites de armazenamento da Neon.
 
 ---
 
-### Desafio 3 — Sincronização do Estado de Assinatura
+### Desafio 3 - Sincronização do Estado de Assinatura
 Os eventos do Stripe chegam de forma assíncrona via webhooks, criando uma janela onde o banco de dados pode estar desatualizado em relação ao status real da assinatura do usuário.
 
 **Solução:** Implementação de handlers de webhook idempotentes que mapeiam os tipos de evento do Stripe para atualizações específicas no banco de dados, usando o `stripe_customer_id` como chave de ligação entre o Stripe e o modelo de usuário. As verificações de assinatura sempre leem do banco de dados, que é a única fonte de verdade.
